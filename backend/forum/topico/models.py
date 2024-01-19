@@ -29,20 +29,25 @@ class Topico(models.Model):
     assunto = models.CharField(max_length=200, choices=[(assunto,assunto) for assunto in tipos_de_assunto])
     data_criacao = models.DateTimeField(auto_now_add=True)
     titulo = models.CharField(max_length=200)
-    conteudo = models.TextField()
 
     def __str__(self):
         return f'topico: {self.titulo}'
     
+class Postagem(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    topico = models.ForeignKey(Topico, on_delete=models.CASCADE)
+    conteudo = models.TextField()
+    
+    def __str__(self):
+        return f'postagem de {self.user.username} sobre o {self.topico}'
 
 class Comentario(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     conteudo = models.TextField()
     data_criacao = models.DateTimeField(auto_now_add=True)
-    topico = models.ManyToManyField(Topico)
+    postagem = models.ForeignKey(Postagem, on_delete=models.CASCADE)
     votos_positivos = models.IntegerField(default=0)
     votos_negativos = models.IntegerField(default=0)
 
     def __str__(self):
-        topicos_str = ', '.join([str(topico) for topico in self.topico.all()])
-        return f'comentario do {self.user.username} sobre o {topicos_str}'
+        return f'comentario da {self.postagem}'
