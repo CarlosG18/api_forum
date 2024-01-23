@@ -49,5 +49,11 @@ class Comentario(models.Model):
     votos_positivos = models.IntegerField(default=0)
     votos_negativos = models.IntegerField(default=0)
 
+    def update_voto(self, type):
+        if type == "positivo":
+            self.votos_positivos += 1
+        elif type == "negativo":
+            self.votos_negativos += 1
+
     def __str__(self):
         return f'comentario da {self.postagem}'

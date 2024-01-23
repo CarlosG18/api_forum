@@ -56,15 +56,14 @@ Construir uma API para um fórum online, permitindo que os usuários criem tópi
 ## Fluxo de Desenvolvimento Sugerido:
 
 1. Configuração do Projeto:
-    Configure um novo projeto Django.
-    Instale e configure o Django REST framework.
+    Configure um novo projeto Django **done**.
+    Instale e configure o Django REST framework **done**.
 
 2. Modelagem de Dados:
-    Crie modelos para usuários, tópicos, postagens, comentários e votos.
-    [link da modelagem]()
+    Crie modelos para usuários, tópicos, postagens, comentários e votos **done**.
 
 3. Serializers:
-    Desenvolva Serializers para cada modelo.
+    Desenvolva Serializers para cada modelo **done**.
 
 4. Views e Roteamento:
     Implemente Views para realizar operações CRUD nos modelos.
